@@ -1,0 +1,226 @@
+\documentclass [11pt,a4paper]{article}
+\usepackage{graphicx}
+%\documentstyle [epsf,epsfig,11pt,amssymb]{article}
+
+% Set up generic page
+%
+%\setlength{\textheight}{23cm}
+%\setlength{\textwidth}{17cm}
+%\unitlength 1mm
+%\font\ninerm=cmr9
+
+\textwidth=16.cm
+%\textheight=26cm
+\setlength{\hoffset}{-1.cm}
+\setlength{\voffset}{-1.cm}
+\parskip=0.1cm
+
+\newcommand{\cosmos}{COSMOS}
+\newcommand{\xmmlss}{XMM-LSS}
+\newcommand{\cdfs}{CDFS}
+\newcommand{\elais}{ELAIS-S1}
+\newcommand{\spt}{SPT DEEP}
+\newcommand{\ddfa}{DDF\_820}
+\newcommand{\ddfb}{DDF\_858}
+\newcommand{\ddfc}{DDF\_1200}
+\newcommand{\ddfd}{DDF\_2689}
+\newcommand{\feature}{feature\_baseline\_10yrs}
+\newcommand{\strech}{$X_1$}
+\newcommand{\color}{$c$}
+\newcommand{\daymax}{$T_0$}
+\newcommand{\redshift}{$z$}
+\newcommand{\tmin}{$T_{min}$}
+\newcommand{\tmax}{$T_{max}$}
+\newcommand{\phasemin}{$ph_{min}$}
+\newcommand{\phasemax}{$ph_{max}$}
+
+
+
+\begin{document}
+
+\renewcommand\appendix{\par
+  \setcounter{section}{0}
+  \setcounter{subsection}{0}
+  \setcounter{figure}{0}
+  \setcounter{table}{0}
+  \renewcommand\thesection{Appendix} %\Alph{section}}
+  \renewcommand\thefigure{\Alph{section}\arabic{figure}}
+  \renewcommand\thetable{\Alph{section}\arabic{table}}
+}
+
+
+
+
+\section{Overview of observing strategies}
+
+\subsection{Available strategies}
+
+\subsection {Key properties}
+
+\subsubsection {WFD}
+
+\subsubsection{ DDF}
+
+The list of Deep Drilling Fields (DDF) observed is given in table \ref{tab:ddf_list} and on figure \ref{fig:ddf_map}. Observing strategies considered in this study but altsched* have considered \cosmos, \xmmlss, \cdfs and \elais, the four DDF already selected by the project. \spt has been observed but for feature* cadences. kraken\_2035 considered four additionnal fields increasing the number of DDF observed to nine.
+
+\begin{table*}[!htbp]
+  \begin{center}
+  \begin{tabular}{|l|c|c|c|c|}
+    \hline
+    Field name & OpSim ID & Ra (deg) & Dec(deg) & Observing strategies\\
+    \hline
+    \cosmos & 2786 & 150.36 & 2.84 &All \\
+    \xmmlss & 2412 & 34.39 & -5.09 & All \\
+    \cdfs & 1427 & 53.00 & -27.44 & All \\
+    \elais & 744 & 0.  & -45.52 & All \\
+    \spt & 290 & 349.39 & -63.32 & All except feature*\\
+    \ddfa & 820 & 119.55 & -43.37 & kraken\_2035\\
+    \ddfb & 858 & 187.62 & -42.49 & kraken\_2035\\
+    \ddfc & 1200 & 176.63 & -33.15 & kraken\_2035\\
+    \ddfd & 2689 & 201.85 & 0.93 & kraken\_2035\\
+    \hline
+  \end{tabular}
+  \caption{List and location of Deep Drilling Fields observed.}\label{tab:ddf_list}
+  \end{center}
+\end{table*}
+
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=14cm,height=10cm]{Figures/All.png}
+\caption{Location of the Deep Drilling fields observed (black squares). Deep fields observed by previous surveys (red circles) and potential candidates for spectroscopic follow-up (green stars) are also mentioned. Yellow and magenta lines represent the Galactic and Ecliptic planes, respectivelly. Blue and red stars indicate potential deep field locations for EUCLID and WFIRST, respecivelly.}\label{fig:ddf_map}
+\end{center}
+\end{figure}
+
+DDF observations are composed of a sequence of 96 visits in r,g,i,z,y (namely 20,10,20,26,20 visits). This corresponds to a total observing time of about one hour and few minutes if filter changes, slew times and telescope overheads are taken into account.
+
+The key facets of observing strategies that have an impact on the number and on the quality of well-measured supernovae are:
+\begin{itemize}
+
+\item Cadence: a regular cadence (typical values: three to four days) is important to get well-sampled light curves. Minimal inter-night gaps are mandatory to keep a high detection efficiency of the supernovae.
+ \item Season length: the season length has an impact on the total number of supernovae that may be observable. 170 to 180 days are values of interest for supernova science. 
+\item Depth: m5, the five sigma depth, is the magnitude corresponding to a flux with a signal-to-noise ratio (SNR) equal to 5. Since only light curve points of well-measured supernovae with SNR $>$5 are considered, m5 has an impact on the redshift limit of observation (photostatistic limit).  
+ 
+\item Spatial coverage and uniformity: while this item may be more important for WFD, it may be interesting to observe DDF evenly distributed in Ra (and Galactic/Ecliptic planes avoided). This would allow to seach for anisotropies using individual DDF Hubble diagrams.
+
+ \end{itemize}
+
+Illustrative plots of these key points are given on Figures \ref{fig:cosmos_cad}-\ref{fig:spt deep_m5} for baseline18a, feature\_baseline\_10yrs, kralen\_2026 and kraken\_2035 observing strategies and for the nine above-mentioned DDF. Among these cadences feature\_baseline\_10yrs displays interesting features with respect to supernovae observations for the four canonical DDF:
+\begin{itemize}
+\item Cadence: a median cadence of three days is observed whereas other observing strategies present cadences that may reach up to 14 days. Inter-night gaps are also smaller for \cosmos and \xmmlss: 10 to 15 days and 5 to 7 days for the first and second maxima respectivelly whereas  for baseline18a, kralen\_2026 and kraken\_2035 the first (second) maximum is at the level of 18 to 40 (13 to 20) days.  
+\item Season length: feature\_baseline\_10yrs shows the highest season lengths with values around 150 days for \cosmos and \xmmlss, and 180 days for \cdfs and \elais whereas other strategies lead to values of about 130, 140, 120, and 150 for \cosmos, \xmmlss, \cdfs, and \elais, respectivelly.
+\item Depth: while median m5-values are compatible among the strategies (the decrease during season 2 for the four fields in  feature\_baseline\_10yrs is due to a known bug in the weather simulations) the coadded m5 depth per season shows clearly that feature\_baseline\_10yrs is a 0.7 (\cosmos), 0.4 (\xmmlss, \cdfs, \elais) magnitude deeper (r-band) survey compared to the others. This results is to be explained by better cadences and longer seasons.
+ 
+\end{itemize}
+Key properties of \spt, \ddfa, \ddfb, \ddfc and \ddfb~fields are given on Figures \ref{fig:spt deep_cad} to\ref{fig:kraken_m5}.
+
+\section {Metrics}
+
+\subsection {Cadence metric }
+
+\subsection{ Number of well-measured type Ia supernovae}
+The strategy to estimate the number of well-measured type Ia supernovae is the following. Light curves are simulated and fitted using observations of a given cadence. Selection criteria are applied to get high-quality supernovae. The resulting observing efficiency curves are then convolved with a production rate so as to estimate the number of well-measured type Ia supernovae that may be collected by LSST  given an observing strategy. 
+
+\subsubsection{ Parameter space for simulations}
+A type Ia supernova may be described using SALT2 parameters stretch (\strech), color (\color), DayMax (\daymax) and redshift (\redshift). Up to nine (\strech,\color) pairs have been considered:
+\begin{itemize}
+\item (\strech,\color)=(-2.0,0.2) : faint supernova
+\item (\strech,\color)=(0.0,0.0) : medium supernova
+\item (\strech,\color)=(2.0,-0.2) : bright supernova
+\item (\strech,\color)=(-2.0,0.0) : for DDF only
+\item (\strech,\color)=(-2.0,0.2) : for DDF only
+\item (\strech,\color)=(0.0,-0.2) : for DDF only
+\item (\strech,\color)=(0.0,0.2) : for DDF only
+\item (\strech,\color)=(2.0,0.0) : for DDF only
+\item (\strech,\color)=(2.0,0.2) : for DDF only
+\end{itemize}
+
+For each of these configurations the range of \redshift~and \daymax~values are:
+\begin{itemize}
+\item 0.01 $\leq$ \redshift $\leq$ 0.4 (1.4) for WFD (DDF) surveys
+ \item \tmin  $\leq$ \daymax  $\leq$ \tmax  with a step of 1 day for DDF surveys (\tmin~and \tmax~ are the min and max MJD of a season).
+ \end{itemize}
+\subsubsection{ Selection criteria}
+
+\paragraph{ WFD}
+
+\paragraph{ DD}
+The selection of a sample of well-measured type Ia supernovae is done in two steps. A sample of observable supernovae is selected by requiring light curves to have \phasemin $\leq$ -5 and \phasemax $\geq$ 20 (where \phasemin~ and \phasemax~ are the minimal and maximum phases of the LC points, respectivelly). For each supernovae in this reference sample, additional selection criteria are applied:
+\begin{itemize}
+\item $N_{bef} \geq 4$ and $N_{aft} \geq 10$ where $N_{bef}$ and $N_{aft}$ are the number of LC points (with SNR$\geq$ 5) before and after \daymax.
+ \item $\sigma_c \leq 0.04$ where $\sigma_c$ is the error on the \color~parameter estimated from the fit of the light curve.
+\end{itemize}
+The season length which depends on the redshift is estimated using the supernovae of the reference sample. 
+
+\section{ Results}
+
+\subsection{ Cadence metric }
+
+\subsubsection{ WFD}
+
+\subsubsection{ DD}
+
+\subsection{ Number of well-measured type Ia supernovae}
+
+\subsubsection {WFD}
+
+\subsubsection{ DD}
+
+Typical detection efficiencies are given on Fig. \ref{fig:effi} for the \cosmos~field and feature\_baseline\_10 yrs cadence . One may observe that the lowest efficiencies (independently on the (\strech,\color) values) correspond to the first two seasons of observations which are known to be very bad for this observing strategy and for this field (see for instance Figs. \ref{fig:cosmos_cad} and \ref{fig:cosmos_m5}).
+
+\begin{figure}[htbp]
+\begin{center}
+  
+  \includegraphics[width=12cm]{Figures/effi_feature_cosmos.png}
+ \caption{Detection efficiency as a function of the redshift for the \cosmos~field and feature\_baseline\_10yrs observing strategy (10 seasons). Blue, red and black lines correspond to faint, medium and bright supernovae, respectivelly.}\label{fig:effi}
+\end{center}
+\end{figure}
+
+Efficiency curves are convolved with a production rate \cite{perrett} to estimate the number of well-measured type Ia supernovae that may be collected by LSST. Summary plots are given for the four canonical fields (Fig \ref{fig:nsn_four}) and for all the DDF (Fig \ref{fig:nsn_all}). One may observe that, despite bad observing years, \feature~ shows the best results in terms of number of well-measured type Ia supernovae. Equivalent results are obtained with Colossus\_2667.
+
+\begin{figure}[htbp]
+\begin{center}
+  
+  \includegraphics[width=15cm]{Figures/NSN_season_4DDF.png}
+  \includegraphics[width=15cm]{Figures/NSN_all_4DDF.png}
+ \caption{Top: Number of well-measured type Ia supernovae as a function of the season. Bottom: Number of  well-measured type Ia supernovae as a function of observing strategy after ten years of operation. Four DDF (\cosmos,\xmmlss,\cdfs,\elais) have been considered. The red line corresponds to 15k supernovae.}\label{fig:nsn_four}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+  
+  \includegraphics[width=15cm]{Figures/NSN_season_allDDF.png}
+  \includegraphics[width=15cm]{Figures/NSN_all_allDDF.png}
+ \caption{Top: Number of well-measured type Ia supernovae as a function of the season. Bottom: Number of  well-measured type Ia supernovae as a function of observing strategy after ten years of operation. All DDF have been considered.The red line corresponds to 27k supernovae.}\label{fig:nsn_all}
+\end{center}
+\end{figure}
+
+When considering all DDF the winner is of course kraken\_2035 (27K after ten years) since this observing strategy considered 9 DDFs whereas all others observed 4 to 5 fields. One may observe that extrapolating a four fields configuration results (like the ones obtained with \feature) to a 9 DDF observing strategy will probably lead to an overestimation of the resulting number of well-measured type Ia supernovae. It is indeed difficult to maintain the same quality (in terms of cadence, season length and thus depth) when moving from a 4 to a 9 DDF strategy.
+
+\begin{figure}[htbp]
+\begin{center}
+  
+  \includegraphics[width=15cm]{Figures/Z95_NSN.png}
+ \caption{95\% redshift limit (ie corresponding to the detection of 95\% of the supernovae of the corresponding sample) as a function of the number of faint supernovae. Each point correspond to a field, a season and an observing strategy.}\label{fig:z95}
+\end{center}
+\end{figure}
+
+Another way to assess the quality of an observing strategy is to estimate the redshift detection limit for faint supernovae (per season and per field). On Figure \ref{fig:z95} is displayed the 95\% redshift limit (ie corresponding to the detection of 95\% of the supernovae of the corresponding sample) as a function of the number of faint supernovae. Huge variations among strategies as well as inside strategies are observed. This plot reflects the quality of the proposed cadences. It seems that \redshift~of 0.7-0.75 may be reached with four fields. Once again \feature~tend to give the highest redshifts and the most homogeneous results among the fields and seasons. 
+
+\section{ Possible improvements}
+
+\section{ Conclusion}
+
+\begin{thebibliography}{9}
+\bibitem{perrett} Evolution in the Volumetric Type Ia Supernova Rate from the Supernova Legacy Survey, K.Perrett {\it et al}, The Astronomical Journal, Volume 144, Issue 2 (2012).
+  
+ \end{thebibliography}
+
+\clearpage
+\appendix
+  
+\input DD_plots_cadence.tex
+
+
+\end{document}
