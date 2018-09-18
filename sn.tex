@@ -1,6 +1,7 @@
 \documentclass [11pt,a4paper]{article}
 \usepackage{graphicx}
 %\documentstyle [epsf,epsfig,11pt,amssymb]{article}
+\usepackage{lsstdesc_macros}
 
 \RequirePackage[colorlinks,breaklinks]{hyperref}  
 \hypersetup{linkcolor=blue,citecolor=blue,filecolor=black,urlcolor=blue} 
@@ -56,49 +57,109 @@
 
 \tableofcontents
 
+%% We assess the impact of the observing strategy on the size and
+%% quality of the LSST SN~Ia sample. This study was driven by two main
+%% design considerations:
 
-\section{Introduction}
 
-We study below the impact of cadence on the size and quality of the
-type Ia supernova sampled. In the course of this study, we were driven
-by two main considerations.
+\section{Key design elements}
 
-First, SN cosmology in LSST is now systematics-limited.  Increasing
-the statistics in the Hubble diagram must be coupled with (1) advances
-in the measurement of the SN distances (i.e. a control at the per-mil
-level of the photometry and survey flux calibration, and possibly a
-3-parameter SN standardization technique) (2) a better control of the
-SN astrophysical environment and its potential impacts on the SN
+SN cosmology is systematics-limited.  Increasing the statistics in the
+Hubble diagram must be coupled with (1) advances in the measurement of
+the SN distances (i.e.  a control at the per-mil level of the
+photometry and survey flux calibration, and possibly a 3-parameter SN
+standardization technique) (2) a better control of the SN
+astrophysical environment and its potential impacts on the SN
 lightcurves and distances (local host properties, absorption) (3) a
 better control of the SN diversity (SN~Ia sub-populations, population
 drift with redshift) (4) a precise determination of the survey
 selection function (SN identification, residual contamination by
 non-SN~Ia's as a function of redshift).
 
-Second, access to spectroscopy will not scale with the large amount of
-SNe LSST will deliver.  Only $\sim$ 10\% of LSST SNe will benefit from
-a live spectrum, and obtaining a host redshift for the full LSST
+Access to spectroscopy will not scale with the large amount of SNe
+LSST will deliver.  About 10\% of LSST SNe will benefit from a live
+spectrum.  Securing spectroscopic host redshifts for the full LSST
 sample using the fiber spectrographs available in the southern
-hemisphere is doable, but challenging.  The main consequence of this
-situation is that all the studies listed above, in particular
-identification and standardization will rely primarily on the
-supernova light curves.  Obtaining high quality SN light curves is
-therefore the key design point of the SN survey.
+hemisphere is challenging -- although doable.  As a consequence, all
+the studies listed above, in particular SN~Ia identification and the
+standardization of SN luminosity distances will rely on the supernova
+light curves only.  Obtaining high quality SN light curves is
+therefore a key design point of the SN survey.
 
-Also, since spectroscopic time is scarse, we cannot afford to waste
-it.  This means that all transients identified spectroscopically,
-around peak luminosity, as SNe~Ia, {\em must} eventually have light
-curves of sufficient quality to end up in the Hubble diagram.  This
-puts a strong requirement on the regularity and predictability of the
-observing strategy.
+Furthermore, spectroscopic time being scarse, we cannot afford to
+waste it.  This means that all transients identified
+spectroscopically, around peak luminosity, as SNe~Ia, {\em must}
+eventually have light curves of sufficient quality to end up in the
+Hubble diagram.  This puts another requirement on the regularity and
+predictability of the observing strategy.
 
-Since light curve sampling quality is at the core of the design of the
-LSST SN survey, we propose to adopt as our main metric, the size and
-redshift extent of the subset of Hubble-diagram-grade supernovae. By
-Hubble-diagram-grade supernova, we mean a supernova, with a light
-curve sampling which is good enough to allow measuring a standardized
-distance with a measurement uncertainty lower than the SN-to-SN
-intrinsic dispersion.
+Since light curve quality is at the core of the design of the LSST SN
+survey, we propose to adopt as our main metric, the size and redshift
+extent of the subset of well sampled SNe~Ia.  We define in the next
+section what we mean by ``well-sampled''.
+
+
+\subsection{Light curve quality}
+
+\begin{enumerate}
+\item the follow-up of each supernova must be good enough in the
+  observer-frame bands that correspond to the $B$- and $V$-restframe
+  spectrum ($3800 \angstrom < \lambda < 7000 \angstrom$).  At
+  high-redshift, in particular, one should avoid relying on the $UV$
+  restframe region to derive a distance, given the high intrinsic
+  dispersion of SN~Ia at those wavelengths.
+  
+\item we require the light curve shape to be well sampled in the
+  (restframe) phase interval $[-10;+30]$ days, with at least four
+  visits before peak (each of those visits in any of the eligible
+  band), and ten visits after peak.  To obtain this in the lower
+  redshift region of the Hubble diagram, one requires an
+  observer-frame cadence of 4 days.  In the upper redshift region (DDF
+  fields), this requirement may be slightly relaxed. However, since we
+  are going to rely exclusively on photometric identification, it is
+  essential to secure a tight sampling of the SN color evolution at
+  all redshift.
+  
+\item we require that the photon noise contribution to the distance
+  measurement is subdominant w.r.t. the intrinsic dispersion of the
+  SNe (after standardization).  There are several ways to quantify
+  this.  With today's standardization techniques, the SN standardized
+  distance modulus is:
+  \begin{equation}
+    \mu = m^\star_B + \alpha X_1 - \beta C - \cal{M}
+  \end{equation}
+  where $m^\star_B$ is the peak brightness in restframe $B$, $X_1$
+  characterize the lightcurve width, and $C$ is an estimate of the
+  restframe color $B-V$. $\alpha$, $\beta$ and $\cal{M}$ are global
+  parameters, fit along with the cosmology. If the light curve is
+  correctly sampled (see point above), the propagation of the
+  measurement uncertainties affecting $m^\star_B$, $X_1$ and $C$ is
+  dominated by the contribution of $\sigma_C$. 
+  
+  The dominant contribution is carried by the color (since
+  $\beta \sim 3$). This means that requiring $\sigma C < 0.04$ ensures
+  that $\sigma \mu < 0.1$, below the intrinsic dipersion in the Hubble
+  diagram, after standardization.
+
+\item each SN must have good quality measurements in at least three
+  bands. We need two bands, covering the restframe $B$ and $V$ region,
+  to constrain the restframe color of the SN. We need to provision an
+  additional band (redder than restframe $V$), to enable next
+  generation standardization techniques, that will likely rely on two
+  restframe colors.
+\end{enumerate}
+
+
+
+\subsection{Size and redshift extent of the SN sample}
+
+
+
+
+\section{Method}
+
+The quality assessment the DDF supernova sample was performed
+classically using a Monte-Carlo method. 
 
 
 \section{Overview of observing strategies}
@@ -106,7 +167,7 @@ intrinsic dispersion.
 
 \subsection{Available strategies}
 
-Three classes of observing strategies have been studied in detail:
+Four classes of observing strategies have been studied in detail:
 \begin{itemize}
 
 \item the {\tt OpSim}-based cadences released along with the white
