@@ -1,6 +1,7 @@
 \documentclass [11pt,a4paper]{article}
 \usepackage{graphicx}
 %\documentstyle [epsf,epsfig,11pt,amssymb]{article}
+\usepackage{rotating}
 \usepackage{lsstdesc_macros}
 
 \RequirePackage[colorlinks,breaklinks]{hyperref}  
@@ -38,8 +39,8 @@
 \newcommand{\tmax}{$T_{max}$}
 \newcommand{\phasemin}{$ph_{min}$}
 \newcommand{\phasemax}{$ph_{max}$}
-\newcommand{\zlim}{$z_{\mathrm{lim}}\ $}
-\newcommand{\nsnlim}{$N_{z<z_{\mathrm{lim}}}\ $}
+\newcommand{\zfaint}{$z_{\mathrm{faint}}\ $}
+\newcommand{\nsnfaint}{$N_{z<z_{\mathrm{faint}}}\ $}
 \newcommand{\zmed}{$z_{\mathrm{med}}\ $}
 \newcommand{\nsnmed}{$N_{z<z_{\mathrm{med}}}\ $}
 \newcommand{\FixMe}[1]{{\color{red} \bf \large #1}}
@@ -152,40 +153,80 @@ summarize below.
   correctly sampled (see point above), the propagation of the
   measurement uncertainties affecting $m^\star_B$, $X_1$ and $C$ is
   dominated by the contribution of $\sigma_C$. (since $\beta \sim
-  3$). This means that requiring $\sigma C < 0.04$ ensures that
-  $\sigma \mu < 0.1$, below the intrinsic dipersion in the Hubble
-  diagram, after standardization.
+  3$). In practice, requiring $\sigma C < 0.04$ ensures that $\sigma
+  \mu < 0.1$, below the intrinsic dipersion in the Hubble diagram,
+  after standardization.
 \end{enumerate}
 
 This last requirement may be re-expressed as a requirement on the
-signal-to-noise on light-curve amplitude estimate in each
-band. Indeed, if we fit a light curve model $L(t) = A \times \ell(t)$
-on a lightcurve $(t_i, y_i, \sigma_i)$, the least square estimate of
-$A$ is given by:
+signal-to-noise on the light-curve amplitude in each band. Indeed, if
+we fit a light curve model $L(t) = A \times \ell(t)$ one can show
+that:
 $$
-\hat{A} = \frac{\sum w_i \ell_i y_i}{\sum w_i \ell_i^2}
+\mathrm{SNR_{band}} = \sum_{i} 5 \times (f^{-2}_{i|5} L_i^2)^{1/2}
 $$
-and the signal-to-noise ratio on $\hat{A}$ is:
-$$
-SNR = \sum_i (w_i L_i^2)^{1/2}
-$$ since we are in the background dominated regime, the weights may be
-expressed as a function of the $5-\sigma$ limiting flux of each visit
-$f_{i|5}$, and we have:
-$$
-SNR_{\mathrm{band}} = \sum_{i} 5 \times (f^{-2}_{i|5} L_i^2)^{1/2}
-$$
-where $5-\sigma$ limiting flux of each visit $f_{i|5}$.
-
-This metrics is simpler in the sense that it does not require a SN
-light curve fitter -- just lightcurve templates and the limiting
-magnitudes of each visit. In practice, using $SNR_g > $ (for z<), and
-$SNR_r > $, $SNR_i > $ and $SNR_z > $ allows to fulfill the
-requirement on color resolution above.
+where $5-\sigma$ is the limiting flux of each visit $f_{i|5}$.
+This metrics is simpler in the sense that it does not require to use a
+SN light curve fitter. One just need lightcurve templates and the
+limiting magnitudes of each visit -- given in the cadence
+databases. In practice, using $SNR_g > $ (for z<), and $SNR_r > $,
+$SNR_i > $ and $SNR_z > $ allows to fulfill the requirement on color
+resolution above.
 
 
-\subsection{A note about selection biases}
+\subsection{SN samples}
 
+The SN sample usable for cosmology can be defined from the light curve
+requirements listed in the previous section. The key quantity here is
+the redshift limit $z_{lim}$ beyond which one starts loosing events
+because of poor sampling.  This ``redshift-limit'' is not a
+detectability limit.  It is the redshift value beyond which we start
+losing a fraction of the events, because their photometric follow-up
+does not match the requirements listed in the previous section.
 
+The definition of the redshift limit depends on the intrinsic
+luminosity of the supernova considered.  SN~Ia luminosities can be
+parametrized using two parameters, e.g. lightcurve width ($X_1$) and
+SN restframe B-V color at peak ($C$).  As shown on figure
+\ref{fig:jla_X1_C}, the SN distribution in this parameter space is
+compact and more than 95\% of the statistics can be enclosed in a
+tight ellipse. 
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{Figures/sn_parameter_space.pdf}
+    \caption{JLA supernovae the $(X_1,Color)$ parameter space --
+      (blue: nearby, green: SDSS, orange: SNLS).  The large dots
+      indicate the position of the faint, median and bright fiducial
+      SNe used for the cadence analyses.}
+    \label{fig:jla_X1_C}
+  \end{center}
+\end{figure}
+
+On the same figure, we have represented three fiducial SNe of
+particular interest: the red dot represents the faintest SN in this
+region of the parameter space $(X_1=-2, C=0.2)$, the green dot and
+blue dots show the average $(X_1=0, C=0)$ and brightest SN $(X_1=2,
+C=-0.2)$ respectively.
+
+We can define the redshift limit \zfaint as the limit beyond which the
+faintest fiducal SN no longer passes the light curve requirements. By
+doing this, we ensure that all SNe that live in the fiducial $(X_1,C)$
+parameter space and are below \zfaint do pass our light curve
+requirements.  \zfaint defines a {\em redshift-limited sample} whose
+selection function does not depend on the SN properties.
+
+We can also define a similar limit, using the median supernova,
+instead of the faint one.  This defines a SN sample whose upper
+redshift bins are affected by a selection bias, which must be
+determined using a simulation -- which itself depends on our knowledge
+of the SN luminosity distribution at those redshifts.  The uncertainty
+affecting the determination of the selection function generally limits
+the usefulness of the redshift bins affected by a selection bias.
+Since the selection function is generally symmetric around its 50\%
+point, the size of the sample limited by \zmed gives a good
+approximation of the total number of LSST SNe that will have precise
+distances.
 
 
 \subsection{Metrics}
@@ -195,8 +236,8 @@ subset of well sampled SNe.  More precisely, we estimate, for each
 cadence, the following quantities:
 
 \begin{itemize}
-\item the sample redshift limit, \zlim defined above, and the number
-  of well sampled supernovae below the redshift limit \nsnlim
+\item the sample redshift limit, \zfaint defined above, and the number
+  of well sampled supernovae below the redshift limit \nsnfaint
 \item the redshift \zmed at which the median supernova defined above
   no longer passes the signal-to-noise requirements, and the number of
   well-sampled supernovae below this redshift, \nsnmed.  
@@ -204,8 +245,8 @@ cadence, the following quantities:
 The former give an assessment of the size and depth of the redshift
 limited sample, i.e. the sample of supernovae usable for cosmology,
 and whose selection function is extremely easy to determine.  The
-latter gives an assessment of the size and depth of the SN sample that
-are usable for cosmology studies.
+latter gives an assessment of the size and depth of the sample of SNe
+that will have precise distances.
 
 
 \section{Method}
@@ -219,9 +260,9 @@ approach. \FixMe{Philippe,  you may  want to  extend this  paragraph a
 \subsection{Wide Fast Deep}
 WFD observations involve a large number of fields.  The observations
 are dithered, and the size and depth of the final sample depends
-heavily on the details of the observing strategy, in particular, the
-filter allocation strategy and the field selection function \ldots For
-this reason, we opted for a slightly different approach, which we
+heavily on the details of the observing strategy (in particular, the
+filter allocation strategy and the field selection function \ldots)
+For this reason, we opted for a slightly different approach, which we
 describe below.
 
 The celestial sphere is pixellized in Healpix superpixels\footnote{we
@@ -257,8 +298,23 @@ of supernovae (2) the median maximum redshift (3) the median cadence.
 We can also collate these maps in videos, that are useful to evaluate
 the observing strategy as a function of time.
 
-\section{Overview of observing strategies}
+\begin{sidewaysfigure}
+    \begin{center}
+      \includegraphics[width=\linewidth]{Figures/mothra_2045_02611.png}
+      \caption{Example of cadence analysis maps.  Cadence {\em
+          Mothra\_2045}, mjd=62464 (2029-11-24) {\em Upper panels:}
+        (left) total number of well sampled supernovae per healpixel,
+        (middle): median \zmed after 2611 days of survey, (right):
+        median cadence, after 2611 days of survey. {\em Lower panels:}
+        (left) number of SNe~Ia peaking at mjd=62464 and passing the
+        light curve quality cuts (middle) \zmed, i.e.  maximum
+        redshift at which a SN peaking at mjd=62464 would pass the
+        requirements}
+    \end{center}
+\end{sidewaysfigure}
 
+
+\section{Overview of observing strategies}
 
 \subsection{Available strategies}
 
@@ -267,27 +323,33 @@ Four classes of observing strategies have been studied in detail:
 
 \item the {\tt OpSim}-based cadences released along with the white
   paper call (11 cadences released in June 2018 plus 4 additional
-  simulations released in August)
+  simulations released in August), 
   
 \item the {\tt OpSim}- and {\tt Feature}-based strategies that were
-  available before the white paper call. 
+  available before the white paper call, 
 
 \item simulations based on the {\tt Altsched} scheduler proposed by
   Stubbs and Rothchild.  This includes one rolling and another
   non-rolling cadence, plus a non-rolling simulation conducted on a
-  larger footprint.
+  larger footprint (P. Gris),
 
-\item finally, we have tested a series of experimental cadences, based
-  on the new feature-based scheduler (a.k.a.  SLAIR, Yoachim et
-  al). These variations were produced by P. Yoachim, the main author
-  of SLAIR, based on discussions we had at the summer 2018 DESC week
-  (CMU) and the 2018 LSST community workshop (Tucson).
+\item finally, we have tested a series of experimental observing
+  strategies, based on the new feature-based scheduler (a.k.a.  SLAIR,
+  Yoachim et al). These variations were produced by P. Yoachim, the
+  main author of SLAIR, based on discussions we had at the summer 2018
+  DESC week (CMU) and the 2018 LSST community workshop (Tucson).
 \end{itemize}
 
 Table \ref{tab:cadences} summarizes the main characteristics of the
-cadences tested in this study.
+cadences tested in this study.  
 
-\subsection {Key properties}
+
+As can be seen, all cadences have
+
+
+
+
+\subsection{Key properties}
 
 \subsubsection {WFD}
 
@@ -301,8 +363,9 @@ cadences tested in this study.
 %%       Minion  & $N_v$ & 
 %%     \end{tabular}
 %%   \end{center}
-  
 %% \end{table}
+
+
 
 
 nb visits. n visits/night. Median internight gap. average cadence in a given time window. season duration. 
@@ -313,9 +376,15 @@ Here, we show that clearly altsched dominates.
 
 
 
-\subsubsection{ DDF}
+\subsubsection{DDF}
 
-The list of Deep Drilling Fields (DDF) observed is given in table \ref{tab:ddf_list} and on figure \ref{fig:ddf_map}. Observing strategies considered in this study but altsched* have considered \cosmos, \xmmlss, \cdfs and \elais, the four DDF already selected by the project. \spt has been observed but for feature* cadences. kraken\_2035 considered four additionnal fields increasing the number of DDF observed to nine.
+The list of Deep Drilling Fields (DDF) observed is given in table
+\ref{tab:ddf_list} and on figure \ref{fig:ddf_map}. Observing
+strategies considered in this study but altsched* have considered
+\cosmos, \xmmlss, \cdfs and \elais, the four DDF already selected by
+the project. \spt has been observed but for feature*
+cadences. kraken\_2035 considered four additionnal fields increasing
+the number of DDF observed to nine.
 
 \begin{table*}[!htbp]
   \begin{center}
@@ -475,6 +544,29 @@ Another way to assess the quality of an observing strategy is to estimate the re
 \appendix
   
 \input DD_plots_cadence.tex
+
+
+\section{Derivation of formula \ref{eqn:snr}}
+
+\label{sec:snr}
+
+If we fit a light curve model $L(t) = A \times \ell(t)$ on a
+lightcurve $(t_i, y_i, \sigma_i)$, the least square estimate of $A$ is
+given by:
+$$
+\hat{A} = \frac{\sum w_i \ell_i y_i}{\sum w_i \ell_i^2}
+$$
+and the signal-to-noise ratio on $\hat{A}$ is:
+$$
+SNR = \sum_i (w_i L_i^2)^{1/2}
+$$ since we are in the background dominated regime, the weights may be
+expressed as a function of the $5-\sigma$ limiting flux of each visit
+$f_{i|5}$, and we have:
+$$
+SNR_{\mathrm{band}} = \sum_{i} 5 \times (f^{-2}_{i|5} L_i^2)^{1/2}
+$$
+where $5-\sigma$ limiting flux of each visit $f_{i|5}$.
+
 
 
 \end{document}
