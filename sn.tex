@@ -68,13 +68,13 @@
 
 \section{Key design elements}
 
-SN cosmology is systematics-limited.  Increasing the statistics in the
+SN cosmology is systematics-limited. Increasing the statistics in the
 Hubble diagram must be coupled with (1) advances in the measurement of
 the SN distances (i.e.  a control at the per-mil level of the
 photometry and survey flux calibration, and possibly a 3-parameter SN
 standardization technique) (2) a better control of the SN
 astrophysical environment and its potential impacts on the SN
-lightcurves and distances (local host properties, absorption) (3) a
+light curves and distances (local host properties, absorption) (3) a
 better control of the SN diversity (SN~Ia sub-populations, population
 drift with redshift) (4) a precise determination of the survey
 selection function (SN identification, residual contamination by
@@ -102,6 +102,9 @@ Since light curve quality is at the core of the design of the LSST SN
 survey, we propose to adopt as our main metric, the size and redshift
 extent of the subset of well sampled SNe~Ia.  We define in the next
 section what we mean by ``well-sampled''.
+
+
+Four key facets of observing strategy that have an impact on the number and on the quality of well-measured supernovae may be identified: {\it a regular cadence} (typical values: three to four days) is important to get well-sampled light curves ; minimal inter-night gaps are mandatory to keep a high detection efficiency of the supernovae; the {\it season length} has an impact on the total number of supernovae that may be collected ; 170 to 180 days are values of interest for supernova science; {\it depth} quantified by m5, the five-sigma depth, which is the magnitude corresponding to a flux with a signal-to-noise ratio (SNR) equal to 5. Since only light curve points of well-measured supernovae with SNR $>$5 are considered, m5 has an impact on the redshift limit of observation (photostatistic limit); {\it spatial coverage and uniformity} which has an impact both on the wide and on the deep surveys; it may be interesting to observe deep fields evenly distributed in Ra (and Galactic/Ecliptic planes avoided) so as to search for anisotropies using individual Hubble diagrams.
 
 
 \subsection{Requirements on SN sampling}
@@ -229,6 +232,8 @@ approximation of the total number of LSST SNe that will have precise
 distances.
 
 
+
+
 \subsection{Metrics}
 
 We propose to use as our primary metrics the size and depth of the
@@ -253,9 +258,42 @@ that will have precise distances.
 
 \subsection{Deep Drilling fields}
 The DDF  observations involve a  small number of fields  and $O(10^4)$
-SNe.  The metrics  above were estimated using  a classical Monte-Carlo
-approach. \FixMe{Philippe,  you may  want to  extend this  paragraph a
-  little bit}.
+SNe. The list of DDF simulated is given in table
+\ref{tab:ddf_list} and on figure \ref{fig:ddf_map}. The location of four DDF (referred to as reference fields in the following: \cosmos, \xmmlss, \cdfs and \elais) has already been chosen by the project. The number of considered DDF ranges from 4 to 9.
+
+
+\begin{table*}[!htbp]
+  \begin{center}
+  \begin{tabular}{|l|c|c|c|c|}
+    \hline
+    Field name & OpSim ID & Ra (deg) & Dec(deg) & Observing strategies\\
+    \hline
+    \cosmos & 2786 & 150.36 & 2.84 &All \\
+    \xmmlss & 2412 & 34.39 & -5.09 & All \\
+    \cdfs & 1427 & 53.00 & -27.44 & All \\
+    \elais & 744 & 0.  & -45.52 & All \\
+    \spt & 290 & 349.39 & -63.32 & All except feature*\\
+    \ddfa & 820 & 119.55 & -43.37 & kraken\_2035\\
+    \ddfb & 858 & 187.62 & -42.49 & kraken\_2035\\
+    \ddfc & 1200 & 176.63 & -33.15 & kraken\_2035\\
+    \ddfd & 2689 & 201.85 & 0.93 & kraken\_2035\\
+    \hline
+  \end{tabular}
+  \caption{List and location of Deep Drilling Fields observed.}\label{tab:ddf_list}
+  \end{center}
+\end{table*}
+
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=14cm,height=10cm]{Figures/All.png}
+\caption{Location of the Deep Drilling fields observed (black squares). Deep fields observed by previous surveys (red circles) and potential candidates for spectroscopic follow-up (green stars) are also mentioned. Yellow and magenta lines represent the Galactic and Ecliptic planes, respectivelly. Blue and red stars indicate potential deep field locations for EUCLID and WFIRST, respecivelly.}\label{fig:ddf_map}
+\end{center}
+\end{figure}
+
+DDF observations are composed of sequences of 96 visits (in a row) in r,g,i,z,y bands (namely 20,10,20,26,20 visits). This corresponds to a total observing time of about one hour and few minutes if filter changes, slew times and telescope overheads are taken into account.
+
+The strategy to estimate the number of well-measured type Ia supernovae may be summarized in four steps: (1) light curves are simulated and fitted using observations of a given cadence. Selection criteria are applied to get high-quality supernovae. The resulting observing efficiency curves are then convolved with a production rate so as to estimate the number of well-measured type Ia supernovae that may be collected by LSST  given an observing strategy. 
 
 \subsection{Wide Fast Deep}
 WFD observations involve a large number of fields.  The observations
@@ -372,64 +410,16 @@ Here, we show that clearly altsched dominates.
 
 \subsubsection{DDF}
 
-The list of Deep Drilling Fields (DDF) observed is given in table
-\ref{tab:ddf_list} and on figure \ref{fig:ddf_map}. Observing
-strategies considered in this study but altsched* have considered
-\cosmos, \xmmlss, \cdfs and \elais, the four DDF already selected by
-the project. \spt has been observed but for feature*
-cadences. kraken\_2035 considered four additionnal fields increasing
-the number of DDF observed to nine.
 
-\begin{table*}[!htbp]
-  \begin{center}
-  \begin{tabular}{|l|c|c|c|c|}
-    \hline
-    Field name & OpSim ID & Ra (deg) & Dec(deg) & Observing strategies\\
-    \hline
-    \cosmos & 2786 & 150.36 & 2.84 &All \\
-    \xmmlss & 2412 & 34.39 & -5.09 & All \\
-    \cdfs & 1427 & 53.00 & -27.44 & All \\
-    \elais & 744 & 0.  & -45.52 & All \\
-    \spt & 290 & 349.39 & -63.32 & All except feature*\\
-    \ddfa & 820 & 119.55 & -43.37 & kraken\_2035\\
-    \ddfb & 858 & 187.62 & -42.49 & kraken\_2035\\
-    \ddfc & 1200 & 176.63 & -33.15 & kraken\_2035\\
-    \ddfd & 2689 & 201.85 & 0.93 & kraken\_2035\\
-    \hline
-  \end{tabular}
-  \caption{List and location of Deep Drilling Fields observed.}\label{tab:ddf_list}
-  \end{center}
-\end{table*}
-
-
-\begin{figure}[htbp]
-\begin{center}
-\includegraphics[width=14cm,height=10cm]{Figures/All.png}
-\caption{Location of the Deep Drilling fields observed (black squares). Deep fields observed by previous surveys (red circles) and potential candidates for spectroscopic follow-up (green stars) are also mentioned. Yellow and magenta lines represent the Galactic and Ecliptic planes, respectivelly. Blue and red stars indicate potential deep field locations for EUCLID and WFIRST, respecivelly.}\label{fig:ddf_map}
-\end{center}
-\end{figure}
-
-DDF observations are composed of a sequence of 96 visits in r,g,i,z,y (namely 20,10,20,26,20 visits). This corresponds to a total observing time of about one hour and few minutes if filter changes, slew times and telescope overheads are taken into account.
-
-The key facets of observing strategies that have an impact on the number and on the quality of well-measured supernovae are:
+All proposed observing strategies but altsched-like have included DDF.
+Plots illustrating the four key points mentioned above are given on Figures \ref{fig:cosmos_cad}-\ref{fig:spt deep_m5} for baseline18a, feature\_baseline\_10yrs, kralen\_2026 and kraken\_2035 observing strategies and for the five to nine above-mentioned DDF. Among these cadences feature\_baseline\_10yrs displays interesting features with respect to supernovae observations for the reference DDF:
 \begin{itemize}
-
-\item Cadence: a regular cadence (typical values: three to four days) is important to get well-sampled light curves. Minimal inter-night gaps are mandatory to keep a high detection efficiency of the supernovae.
- \item Season length: the season length has an impact on the total number of supernovae that may be observable. 170 to 180 days are values of interest for supernova science. 
-\item Depth: m5, the five sigma depth, is the magnitude corresponding to a flux with a signal-to-noise ratio (SNR) equal to 5. Since only light curve points of well-measured supernovae with SNR $>$5 are considered, m5 has an impact on the redshift limit of observation (photostatistic limit).  
- 
-\item Spatial coverage and uniformity: while this item may be more important for WFD, it may be interesting to observe DDF evenly distributed in Ra (and Galactic/Ecliptic planes avoided). This would allow to seach for anisotropies using individual DDF Hubble diagrams.
-
- \end{itemize}
-
-Illustrative plots of these key points are given on Figures \ref{fig:cosmos_cad}-\ref{fig:spt deep_m5} for baseline18a, feature\_baseline\_10yrs, kralen\_2026 and kraken\_2035 observing strategies and for the nine above-mentioned DDF. Among these cadences feature\_baseline\_10yrs displays interesting features with respect to supernovae observations for the four canonical DDF:
-\begin{itemize}
-\item Cadence: a median cadence of three days is observed whereas other observing strategies present cadences that may reach up to 14 days. Inter-night gaps are also smaller for \cosmos and \xmmlss: 10 to 15 days and 5 to 7 days for the first and second maxima respectivelly whereas  for baseline18a, kralen\_2026 and kraken\_2035 the first (second) maximum is at the level of 18 to 40 (13 to 20) days.  
-\item Season length: feature\_baseline\_10yrs shows the highest season lengths with values around 150 days for \cosmos and \xmmlss, and 180 days for \cdfs and \elais whereas other strategies lead to values of about 130, 140, 120, and 150 for \cosmos, \xmmlss, \cdfs, and \elais, respectivelly.
+\item Cadence: a median cadence of three days is observed whereas other observing strategies present cadences that may reach up to 14 days. Inter-night gaps are also smaller for \cosmos~and \xmmlss: 10 to 15 days and 5 to 7 days for the first and second maxima respectivelly whereas  for baseline18a, kralen\_2026 and kraken\_2035 the first (second) maximum is at the level of 18 to 40 (13 to 20) days.  
+\item Season length: feature\_baseline\_10yrs shows the highest season lengths with values around 150 days for \cosmos~and \xmmlss, and 180 days for \cdfs and \elais whereas other strategies lead to values of about 130, 140, 120, and 150 for \cosmos, \xmmlss, \cdfs, and \elais, respectivelly.
 \item Depth: while median m5-values are compatible among the strategies (the decrease during season 2 for the four fields in  feature\_baseline\_10yrs is due to a known bug in the weather simulations) the coadded m5 depth per season shows clearly that feature\_baseline\_10yrs is a 0.7 (\cosmos), 0.4 (\xmmlss, \cdfs, \elais) magnitude deeper (r-band) survey compared to the others. This results is to be explained by better cadences and longer seasons.
  
 \end{itemize}
-Key properties of \spt, \ddfa, \ddfb, \ddfc and \ddfb~fields are given on Figures \ref{fig:spt deep_cad} to\ref{fig:kraken_m5}.
+Key properties of \spt, \ddfa, \ddfb, \ddfc~and \ddfb~fields are given on Figures \ref{fig:spt deep_cad} to\ref{fig:kraken_m5}.
 
 \section {Metrics}
 
@@ -493,7 +483,7 @@ Typical detection efficiencies are given on Fig. \ref{fig:effi} for the \cosmos~
 \end{center}
 \end{figure}
 
-Efficiency curves are convolved with a production rate \cite{perrett} to estimate the number of well-measured type Ia supernovae that may be collected by LSST. Summary plots are given for the four canonical fields (Fig \ref{fig:nsn_four}) and for all the DDF (Fig \ref{fig:nsn_all}). One may observe that, despite bad observing years, \feature~ shows the best results in terms of number of well-measured type Ia supernovae. Equivalent results are obtained with Colossus\_2667.
+Efficiency curves are convolved with a production rate \cite{perrett} to estimate the number of well-measured type Ia supernovae that may be collected by LSST. Summary plots are given for the reference fields (Fig \ref{fig:nsn_four}) and for all the DDF (Fig \ref{fig:nsn_all}). One may observe that, despite bad observing years, \feature~ shows the best results in terms of number of well-measured type Ia supernovae. Equivalent results are obtained with Colossus\_2667.
 
 \begin{figure}[htbp]
 \begin{center}
