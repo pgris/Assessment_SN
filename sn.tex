@@ -294,7 +294,35 @@ SNe. The list of DDF simulated is given in table
 
 DDF observations are composed of sequences of 96 visits (in a row) in r,g,i,z,y bands (namely 20,10,20,26,20 visits). This corresponds to a total observing time of about one hour and few minutes if filter changes, slew times and telescope overheads are taken into account.
 
-The strategy to estimate the number of well-measured type Ia supernovae may be summarized in four steps: (1) light curves are simulated and fitted using observations of a given cadence. Selection criteria are applied to get high-quality supernovae. The resulting observing efficiency curves are then convolved with a production rate so as to estimate the number of well-measured type Ia supernovae that may be collected by LSST  given an observing strategy. 
+The strategy to estimate the number of well-measured type Ia supernovae may be summarized in four steps: (1) light curves are simulated and fitted using observations of a given cadence; (2) selection criteria are applied to get high-quality supernovae; (3) the resulting observing efficiency curves are then convolved with a production rate \cite{perrett} so as to estimate the number of well-measured type Ia supernovae that may be collected by LSST given an observing strategy. 
+
+Table \ref{tab:sim_ddf} summarizes the parameter used in SN simulations. The selection of a sample of well-measured type Ia supernovae is done in two steps. A sample of observable supernovae is selected by requiring light curves to have \phasemin $\leq$ -5 and \phasemax $\geq$ 20 (where \phasemin~ and \phasemax~ are the minimal and maximum phases of the LC points, respectivelly). For each supernovae in this reference sample, additional selection criteria are applied:
+\begin{itemize}
+\item $N_{bef} \geq 4$ and $N_{aft} \geq 10$ where $N_{bef}$ and $N_{aft}$ are the number of LC points (with SNR$\geq$ 5) before and after \daymax.
+ \item $\sigma_c \leq 0.04$ where $\sigma_c$ is the error on the \sncolor~parameter estimated from the fit of the light curve.
+\end{itemize}
+The season length which depends on the redshift is estimated using the supernovae of the reference sample.
+
+\begin{table}[!htbp]
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Parameter & Range \\
+\hline
+                    & (-2.0,0.2),(0.0,0.0),(2.0,-0.2) \\
+ (\strech,\sncolor) & (-2.0,0.0),(-2.0,0.2),(0.0,-0.2) \\
+                    & (0.0,0.2),(2.0,0.0),(2.0,0.2) \\
+\hline
+\redshift           & [0.01,1.3] (step: 0.025) \\
+\hline
+\daymax             & [\tmin,\tmax] (step: 1 day) \\
+                    & (\tmin~and \tmax~ are the min and max MJD of a season) \\
+                    \hline
+\end{tabular}
+\caption{Range of the parameters used to simulate type Ia SN}\label{tab:sim_ddf}
+\end{center}
+\end{table}
+
 
 \subsection{Wide Fast Deep}
 WFD observations involve a large number of fields.  The observations
@@ -422,43 +450,6 @@ Plots illustrating the four key points mentioned above are given on Figures \ref
 \end{itemize}
 Key properties of \spt, \ddfa, \ddfb, \ddfc~and \ddfb~fields are given on Figures \ref{fig:spt deep_cad} to\ref{fig:kraken_m5}.
 
-\section {Metrics}
-
-\subsection {Cadence metric }
-
-\subsection{ Number of well-measured type Ia supernovae}
-The strategy to estimate the number of well-measured type Ia supernovae is the following. Light curves are simulated and fitted using observations of a given cadence. Selection criteria are applied to get high-quality supernovae. The resulting observing efficiency curves are then convolved with a production rate so as to estimate the number of well-measured type Ia supernovae that may be collected by LSST  given an observing strategy. 
-
-\subsubsection{ Parameter space for simulations}
-A type Ia supernova may be described using SALT2 parameters stretch (\strech), color (\sncolor), DayMax (\daymax) and redshift (\redshift). Up to nine (\strech,\sncolor) pairs have been considered:
-\begin{itemize}
-\item (\strech,\sncolor)=(-2.0,0.2) : faint supernova
-\item (\strech,\sncolor)=(0.0,0.0) : medium supernova
-\item (\strech,\sncolor)=(2.0,-0.2) : bright supernova
-\item (\strech,\sncolor)=(-2.0,0.0) : for DDF only
-\item (\strech,\sncolor)=(-2.0,0.2) : for DDF only
-\item (\strech,\sncolor)=(0.0,-0.2) : for DDF only
-\item (\strech,\sncolor)=(0.0,0.2) : for DDF only
-\item (\strech,\sncolor)=(2.0,0.0) : for DDF only
-\item (\strech,\sncolor)=(2.0,0.2) : for DDF only
-\end{itemize}
-
-For each of these configurations the range of \redshift~and \daymax~values are:
-\begin{itemize}
-\item 0.01 $\leq$ \redshift $\leq$ 0.4 (1.4) for WFD (DDF) surveys
- \item \tmin  $\leq$ \daymax  $\leq$ \tmax  with a step of 1 day for DDF surveys (\tmin~and \tmax~ are the min and max MJD of a season).
- \end{itemize}
-\subsubsection{ Selection criteria}
-
-\paragraph{ WFD}
-
-\paragraph{ DD}
-The selection of a sample of well-measured type Ia supernovae is done in two steps. A sample of observable supernovae is selected by requiring light curves to have \phasemin $\leq$ -5 and \phasemax $\geq$ 20 (where \phasemin~ and \phasemax~ are the minimal and maximum phases of the LC points, respectivelly). For each supernovae in this reference sample, additional selection criteria are applied:
-\begin{itemize}
-\item $N_{bef} \geq 4$ and $N_{aft} \geq 10$ where $N_{bef}$ and $N_{aft}$ are the number of LC points (with SNR$\geq$ 5) before and after \daymax.
- \item $\sigma_c \leq 0.04$ where $\sigma_c$ is the error on the \sncolor~parameter estimated from the fit of the light curve.
-\end{itemize}
-The season length which depends on the redshift is estimated using the supernovae of the reference sample. 
 
 \section{ Results}
 
