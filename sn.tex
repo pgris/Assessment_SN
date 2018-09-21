@@ -3,6 +3,7 @@
 %\documentstyle [epsf,epsfig,11pt,amssymb]{article}
 \usepackage{rotating}
 \usepackage{lsstdesc_macros}
+\usepackage[title]{appendix}
 
 \RequirePackage[colorlinks,breaklinks]{hyperref}  
 \hypersetup{linkcolor=blue,citecolor=blue,filecolor=black,urlcolor=blue} 
@@ -39,6 +40,8 @@
 \newcommand{\tmax}{$T_{max}$}
 \newcommand{\phasemin}{$ph_{min}$}
 \newcommand{\phasemax}{$ph_{max}$}
+\newcommand{\tgapcosmos}{$T_{gap}^{\cosmos}$}
+\newcommand{\tgapothers}{$T_{gap}^{others}$}
 \newcommand{\zfaint}{$z_{\mathrm{faint}}\ $}
 \newcommand{\nsnfaint}{$N_{z<z_{\mathrm{faint}}}\ $}
 \newcommand{\zmed}{$z_{\mathrm{med}}\ $}
@@ -57,7 +60,21 @@
   \renewcommand\thefigure{\Alph{section}\arabic{figure}}
   \renewcommand\thetable{\Alph{section}\arabic{table}} 
 }
- 
+
+\begin{titlepage}
+   \vspace*{\stretch{1.0}}
+   \begin{center}
+      \Large\textbf{Final assessment for the white paper call}\\
+        
+      \Large\textbf{Number of well-measured type Ia Supernovae}\\
+		  
+      \large\textit{N. Regnault, Ph.Gris} \\
+	
+      \large\textit{September 21 2018}
+   \end{center}
+   \vspace*{\stretch{2.0}}
+\end{titlepage}
+
 
 \tableofcontents
 
@@ -166,9 +183,9 @@ This last requirement may be re-expressed as a requirement on the
 signal-to-noise on the light-curve amplitude in each band. Indeed, if
 we fit a light curve model $L(t) = A \times \ell(t)$ one can show
 that:
-$$
-\mathrm{SNR_{band}} = \sum_{i} 5 \times (f^{-2}_{i|5} L_i^2)^{1/2}
-$$
+\begin{equation}
+\mathrm{SNR_{band}} = \sum_{i} 5 \times (f^{-2}_{i|5} L_i^2)^{1/2}\label{eqn:snr}
+\end{equation} 
 where $5-\sigma$ is the limiting flux of each visit $f_{i|5}$.
 This metrics is simpler in the sense that it does not require to use a
 SN light curve fitter. One just need lightcurve templates and the
@@ -231,8 +248,6 @@ Since the selection function is generally symmetric around its 50\%
 point, the size of the sample limited by \zmed gives a good
 approximation of the total number of LSST SNe that will have precise
 distances.
-
-
 
 
 \subsection{Metrics}
@@ -451,17 +466,9 @@ Plots illustrating the four key points mentioned above are given on Figures \ref
 Key properties of \spt, \ddfa, \ddfb, \ddfc~and \ddfb~fields are given on Figures \ref{fig:spt deep_cad} to\ref{fig:kraken_m5}.
 
 
-\section{ Results}
+\section{ Results: Number of well-measured type Ia supernovae}
 
-\subsection{ Cadence metric }
-
-\subsubsection{ WFD}
-
-\subsubsection{ DD}
-
-\subsection{ Number of well-measured type Ia supernovae}
-
-\subsubsection {WFD}
+\subsection {WFD}
 
 \begin{sidewaysfigure}
   \begin{center}
@@ -488,7 +495,7 @@ Key properties of \spt, \ddfa, \ddfb, \ddfc~and \ddfb~fields are given on Figure
   \end{center}
 \end{sidewaysfigure}
 
-\subsubsection{ DD}
+\subsection{ DD}
 
 Typical detection efficiencies are given on Fig. \ref{fig:effi} for the \cosmos~field and feature\_baseline\_10 yrs cadence . One may observe that the lowest efficiencies (independently on the (\strech,\sncolor) values) correspond to the first two seasons of observations which are known to be very bad for this observing strategy and for this field (see for instance Figs. \ref{fig:cosmos_cad} and \ref{fig:cosmos_m5}).
 
@@ -530,11 +537,11 @@ When considering all DDF the winner is of course kraken\_2035 (27K after ten yea
 \end{center}
 \end{figure}
 
-Another way to assess the quality of an observing strategy is to estimate the redshift detection limit for faint supernovae (per season and per field). On Figure \ref{fig:z95} is displayed the 95\% redshift limit (ie corresponding to the detection of 95\% of the supernovae of the corresponding sample) as a function of the number of faint supernovae. Huge variations among strategies as well as inside strategies are observed. This plot reflects the quality of the proposed cadences. It seems that \redshift~of 0.7-0.75 may be reached with four fields. Once again \feature~tend to give the highest redshifts and the most homogeneous results among the fields and seasons. 
+Another way to assess the quality of an observing strategy is to estimate the redshift detection limit for faint supernovae (per season and per field). On Figure \ref{fig:z95} is displayed the 95\% redshift limit (ie corresponding to the detection of 95\% of the supernovae of the corresponding sample) as a function of the number of faint supernovae. Huge variations among and inside strategies are observed. This plot reflects the quality of the proposed cadences. It seems that \redshift~of 0.7-0.75 may be reached with four fields. Once again \feature~tend to give the highest redshifts and the most homogeneous results among the fields and seasons. 
 
 \section{New proposals}
 
-\subsection{new DDF strategy}
+\subsection{DDF observing strategy}
 
 In OpSim the choice to observe a given field is done on the fly according to an optimized selection function depending on criteria including (among others) observing conditions, slew time minimization, last time of visit, and total observing time. While the use of a simple metric (see below) would help in choosing another approach could be to use a pre-defined table that would specify which DDF are to be observed on a given night.
 
@@ -550,7 +557,12 @@ Let us consider the four reference fields \cosmos, \xmmlss, \cdfs~and \elais. Si
 \end{center}
 \end{figure}
 
-
+The table of observations may be defined using median gap values \tgapcosmos~and \tgapothers~when \cosmos~and \xmmlss,\cdfs,\elais~are not observable, respectively. Observing time windows are then defined by:
+\begin{itemize}
+\item{[\tgapothers-w/2,\tgapothers+w/2]: \cosmos~ is observed}
+\item{[\tgapcosmos-w,\tgapcosmos+w]: \xmmlss, \cdfs, \elais~are observed.}
+\end{itemize}
+with a width w equal to 2/3*(\tgapcosmos-\tgapothers).
 
 \subsection{altsched rolling 80/20}
 
@@ -566,10 +578,13 @@ Let us consider the four reference fields \cosmos, \xmmlss, \cdfs~and \elais. Si
  \end{thebibliography}
 
 \clearpage
+
+
 \appendix
   
-\input DD_plots_cadence.tex
 
+
+\begin{appendices}
 
 \section{Derivation of formula \ref{eqn:snr}}
 
@@ -593,5 +608,10 @@ $$
 where $5-\sigma$ limiting flux of each visit $f_{i|5}$.
 
 
+\section{DDF plots}
+
+\input DD_plots_cadence.tex
+
+\end{appendices}
 
 \end{document}
